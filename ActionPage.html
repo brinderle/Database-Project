@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='styles.css' type='text/css' />
+    <meta charset="UTF-8">
+    <title>Query</title>
+  </head>
+  <body>
+    <h1>Query our Database</h1>
+    Please select a Topic and what you would like to do with it:
+    <form action="queryspecifics.php" method="POST">
+        <input type="radio" id="Topic" name="Topic" value="Guest"> Guest <br> 
+        <input type="radio" id="Topic" name="Topic" value="Attraction"> Attraction <br>
+        <input type="radio" id="Topic" name="Topic" value="Employee"  > Employee <br>
+        <input type="radio" id="Topic" name="Topic" value="Regions"> Park Names & Regions <br>
+
+
+        What you would like to do with it?
+        </br>
+        <input type="radio" id="QueryTopic" name="QueryTopic" value="Insert" > Insert <br>
+        <input type="radio" id="QueryTopic" name="QueryTopic" value="Select"> Select <br>
+        <input type="radio" id="QueryTopic" name="QueryTopic" value="Update"  > Update <br>
+        <input type="radio" id="QueryTopic" name="QueryTopic" value="Delete"> Delete<br>
+        <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+    </form>
+    </body>
+</html>
