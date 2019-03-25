@@ -10,19 +10,19 @@
         echo "You have selected the action:" .$selected_action ; 
         echo "You have selected the Topic:" .$selected_topic; 
 
-         if(isset($_POST['QueryTopic']) == "Insert")
+         if($selected_action == "Insert")
          {
             header('Location: Insert.html');
          }
-         if(isset($_POST['QueryTopic']) == "Select")
+         else if($selected_action == "Select")
          {
             header('Location: Select.html');
          }
-         if(isset($_POST['QueryTopic']) == "Update")
+         else if($selected_action == "Update")
          {
             header('Location: Update.html');
          }
-         if(isset($_POST['QueryTopic']) == "Delete")
+         else if($selected_action == "Delete")
          {
             header('Location: Delete.html');
          }
