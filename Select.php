@@ -8,9 +8,7 @@
   <body>
     <?php
     echo 'hello';
-    echo '<p>$_SESSION["Topic"]</p>';
-    echo $_SESSION["Topic"];
-    echo $_SESSION["QueryTopic"];
+    echo '<p>'$_SESSION["Topic"]'</p>';
     ?>
     <p>This form links to GetColumns.php where it gets the columns based on the topic you selected on the previous page.  This information should end up being used for the column names that you see underneath this.</p>
     <form action="GetColumns.php" method="post">
