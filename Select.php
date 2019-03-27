@@ -6,6 +6,12 @@
     <title>Query</title>
   </head>
   <body>
+    <?php
+    echo 'hello';
+    echo '<p>$_SESSION["Topic"]</p>';
+    echo $_SESSION["Topic"];
+    echo $_SESSION["QueryTopic"];
+    ?>
     <p>This form links to GetColumns.php where it gets the columns based on the topic you selected on the previous page.  This information should end up being used for the column names that you see underneath this.</p>
     <form action="GetColumns.php" method="post">
         <p><input type="submit" /></p>
@@ -24,13 +30,13 @@
       <input type="submit" value="Submit">
     </form> 
     <p>This form should allow the user to give input to the attributes from the table and then use the inputs for queries to return information.  Also need to add functionality for greater than, less than, and equal to selection</p>
-<?php
-	session_start();
-  echo '<h1>hello</h1>';
-  echo '<p>$_SESSION["Topic"]</p>';
-  echo $_SESSION["Topic"];
-  echo $_SESSION["QueryTopic"];
-	echo '<h1>$_SESSION["Topic"]</h1>';
-  ?>
+<!-- <?php
+	// session_start();
+ //  echo '<h1>hello</h1>';
+ //  echo '<p>$_SESSION["Topic"]</p>';
+ //  echo $_SESSION["Topic"];
+ //  echo $_SESSION["QueryTopic"];
+	// echo '<h1>$_SESSION["Topic"]</h1>';
+  ?> -->
     </body>
 </html>
