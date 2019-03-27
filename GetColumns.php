@@ -23,6 +23,6 @@
         array_push($columns, $row['COLUMN_NAME']);
     }
     $_SESSION['columns'] = $columns;
-    echo $_SESSION['columns'];
+    echo $_SESSION['columns'][2];
     mysqli_close($con);
 ?>
