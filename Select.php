@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel='stylesheet' href='styles.css' type='text/css' />
-    <meta charset="UTF-8">
-    <title>Query</title>
-  </head>
-  <body>
-    <h1>Select from Database</h1>
-<!-- 	<?php
-	session_start();
-  echo '<h1>hello</h1>';
-  echo '<p>$_SESSION["Topic"]</p>';
-  echo $_SESSION["Topic"];
-  echo $_SESSION["QueryTopic"];
-	echo '<h1>$_SESSION["Topic"]</h1>';
-	?> -->
-  <?php
+<?php
     require_once('./library.php');
     $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
     $DATABASE);
@@ -37,5 +20,3 @@
     }
     mysqli_close($con);
 ?>
-    </body>
-</html>
