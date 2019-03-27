@@ -1,11 +1,13 @@
 <html>
     <body>
         <?php
-
+		session_start();
         echo "You have reached the queryspecifics.php\n";
 
         $selected_topic = $_POST['Topic'];  
-        $selected_action = $_POST['QueryTopic'];  
+        $selected_action = $_POST['QueryTopic']; 
+		$_SESSION['Topic'] = $selected_topic;
+		$_SESSION['QueryTopic'] = $selected_action;
 
         echo "You have selected the action:" .$selected_action ; 
         echo "You have selected the Topic:" .$selected_topic; 
