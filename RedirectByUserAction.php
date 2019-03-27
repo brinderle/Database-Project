@@ -18,7 +18,7 @@
          }
          else if($selected_action == "Select")
          {
-            header('Location: Select.html');
+            header('Location: Select.php');
          }
          else if($selected_action == "Update")
          {
