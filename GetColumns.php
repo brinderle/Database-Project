@@ -12,6 +12,7 @@
     
     session_start();
     $table = $_SESSION['Topic'];
+    $columns = array();
     // Can substitute out the table name for whatever topic was passed in
     $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table'";
     $result = mysqli_query($con,$sql);
@@ -19,6 +20,9 @@
     while($row = mysqli_fetch_array($result)) {
         echo $row['COLUMN_NAME'];
         echo "<br>";
+        array_push($columns, $row['COLUMN_NAME']);
     }
+    $_SESSION['columns'] = $columns;
+    echo $_SESSION['columns'];
     mysqli_close($con);
 ?>
