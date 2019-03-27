@@ -6,8 +6,8 @@
 
         $selected_topic = $_POST['Topic'];  
         $selected_action = $_POST['QueryTopic']; 
-		$_SESSION['Topic'] = $selected_topic;
-		$_SESSION['QueryTopic'] = $selected_action;
+		$_SESSION['Topic'] = $_POST['Topic'];
+		$_SESSION['QueryTopic'] = $_POST['QueryTopic']; 
 
         echo "You have selected the action:" .$selected_action ; 
         echo "You have selected the Topic:" .$selected_topic; 
