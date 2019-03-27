@@ -10,8 +10,10 @@
     }
     // Form the SQL query (a SELECT query)
     
+    session_start();
+    $table = $_SESSION['Topic'];
     // Can substitute out the table name for whatever topic was passed in
-    $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Attraction'";
+    $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table'";
     $result = mysqli_query($con,$sql);
     // Print the data from the table row by row
     while($row = mysqli_fetch_array($result)) {
