@@ -13,6 +13,7 @@
     // Can substitute out the table name for whatever topic was passed in
     $sql="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N 'Attraction'";
     $result = mysqli_query($con,$sql);
+    echo $result;
     // Print the data from the table row by row
     while($row = mysqli_fetch_array($result)) {
         echo $row['COLUMN_NAME'];
