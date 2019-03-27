@@ -11,7 +11,7 @@
     // Form the SQL query (a SELECT query)
     
     // Can substitute out the table name for whatever topic was passed in
-    $sql="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Attraction'";
+    $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Attraction'";
     $result = mysqli_query($con,$sql);
     echo $result;
     // Print the data from the table row by row
