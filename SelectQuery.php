@@ -14,8 +14,8 @@
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
     foreach ($_SESSION['columns'] as $value) {
-        array_push($_SESSION['parameters'], $_POST['$value']);
-        echo $_POST['$value'];
+        array_push($_SESSION['parameters'], $_POST[$value]);
+        echo $_POST[$value];
         echo '<br>';
     }
     // append the conditions to the where clause if there was a value entered for that field
