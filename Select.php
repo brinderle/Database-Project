@@ -54,26 +54,6 @@
     }
     echo "</form>";
     ?>
-    <form action="GetColumns.php">
-      First Col:<br>
-      <input type="text" name="firstCol" value="">
-      <br>
-      Second Col:<br>
-      <input type="text" name="secondCol" value="">
-      <br>
-      Third Col:<br>
-      <input type="text" name="thirdCol" value="">
-      <br><br>
-      <input type="submit" value="Submit">
-    </form> 
     <p>This form should allow the user to give input to the attributes from the table and then use the inputs for queries to return information.  Also need to add functionality for greater than, less than, and equal to selection</p>
-<!-- <?php
-	// session_start();
- //  echo '<h1>hello</h1>';
- //  echo '<p>$_SESSION["Topic"]</p>';
- //  echo $_SESSION["Topic"];
- //  echo $_SESSION["QueryTopic"];
-	// echo '<h1>$_SESSION["Topic"]</h1>';
-  ?> -->
     </body>
 </html>
