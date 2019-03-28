@@ -45,14 +45,12 @@
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='SelectQuery.php' method='post'>";
-    // <input type="radio" id="Topic" name="Topic" value="Guest"> Guest <br> 
-    //     <input type="radio" id="Topic" name="Topic" value="Attraction"> Attraction <br>
-    //     <input type="radio" id="Topic" name="Topic" value="Employee"  > Employee <br>
     foreach ($_SESSION['columns'] as $value) {
+      $id = $value . 'ID';
       echo "$value: <br>";
       echo "<input type='radio' id='' name='' value='='> = <br>";
-      echo "<input type='radio' id='' name='' value='>'> <br>";
-      echo "<input type='radio' id='' name='' value='<'> <br>";
+      echo "<input type='radio' id='' name='' value='>'> > <br>";
+      echo "<input type='radio' id='' name='' value='<'> < <br>";
       echo "<input type='text' name=$value>";
       echo "<br>";
     }
