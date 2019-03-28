@@ -20,11 +20,10 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['parameters'][$i] != '') {
-            // $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
-            echo 'hello';
+            $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
         }
     }
-    // echo $sql;
+    echo $sql;
 
     // $result = mysqli_query($con,$sql);
     // // Print the data from the table row by row
