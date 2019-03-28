@@ -36,10 +36,12 @@
     <!-- this is the section to display the topic -->
     <?php
     session_start();
-    echo 'The topic you selected is ';
+    echo '<p>The topic you selected was </p>';
     echo $_SESSION["Topic"];
-    echo '<br>';
     ?>
+    <br>
+    <br>
+    <p>Fill out this form with the values you would like to query on for each field</p>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='SelectQuery.php' method='post'>";
@@ -51,6 +53,6 @@
     echo "<input type='submit' value='Submit'>";
     echo "</form>";
     ?>
-    <p>This form should allow the user to give input to the attributes from the table and then use the inputs for queries to return information.  Also need to add functionality for greater than, less than, and equal to selection</p>
+    <p>Also need to add functionality for greater than, less than, and equal to selection</p>
     </body>
 </html>
