@@ -15,6 +15,8 @@
     $_SESSION['parameters'] = array();
     foreach ($_SESSION['columns'] as $value) {
         array_push($_SESSION['parameters'], $_POST['$value']);
+        echo $_POST['$value'];
+        echo '<br>';
     }
     // append the conditions to the where clause if there was a value entered for that field
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
