@@ -52,6 +52,7 @@
       echo "<input type='text' name=$value>";
       echo "<br>";
     }
+    echo "<input type='submit' value='Submit'>"
     echo "</form>";
     ?>
     <p>This form should allow the user to give input to the attributes from the table and then use the inputs for queries to return information.  Also need to add functionality for greater than, less than, and equal to selection</p>
