@@ -26,7 +26,7 @@
          }
          else if($selected_action == "Delete")
          {
-            header('Location: Delete.html');
+            header('Location: Delete.php');
          }
 
         exit;
