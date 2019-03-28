@@ -17,7 +17,7 @@
         array_push($_SESSION['parameters'], $_POST['$value']);
     }
     // append the conditions to the where clause if there was a value entered for that field
-    for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    for ($i=0;$i<5;$i++)
     {
         if $_SESSION['parameters'][$i] != '' {
             // $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
