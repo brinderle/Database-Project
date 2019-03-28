@@ -14,7 +14,7 @@
 
          if($selected_action == "Insert")
          {
-            header('Location: Insert.html');
+            header('Location: Insert.php');
          }
          else if($selected_action == "Select")
          {
