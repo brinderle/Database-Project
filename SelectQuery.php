@@ -32,7 +32,10 @@
         // echo $row['name'];
         // echo " " . $row['park'];
         // echo " " . $row['region_name'];
-        echo $row;
+        // echo $row;
+        foreach ($_SESSION['columns'] as $value) {
+            echo $row[$value] . " ";
+        }
         echo "<br>";
     }
     mysqli_close($con);
