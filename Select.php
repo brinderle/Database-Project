@@ -32,6 +32,7 @@
     $_SESSION['columns'] = $columns;
     mysqli_close($con);
 ?>
+    <h1>Select from Database</h1>
     <!-- this is the section to display the topic -->
     <?php
     session_start();
@@ -39,11 +40,6 @@
     echo $_SESSION["Topic"];
     echo '<br>';
     ?>
-    <p>This form links to GetColumns.php where it gets the columns based on the topic you selected on the previous page.  This information should end up being used for the column names that you see underneath this.</p>
-    <form action="GetColumns.php" method="post">
-        <p><input type="submit" /></p>
-    </form>
-    <h1>Select from Database</h1>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='GetColumns.php'>";
