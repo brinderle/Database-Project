@@ -36,12 +36,12 @@
     <!-- this is the section to display the topic -->
     <?php
     session_start();
-    echo '<p>The topic you selected was </p>';
+    echo 'The topic you selected was ';
     echo $_SESSION["Topic"];
     ?>
     <br>
     <br>
-    <p>Fill out this form with the values you would like to query on for each field</p>
+    <p>Fill out this form with the values you would like to query on for each field.</p>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='SelectQuery.php' method='post'>";
