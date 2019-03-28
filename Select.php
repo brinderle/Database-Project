@@ -50,9 +50,9 @@
     //     <input type="radio" id="Topic" name="Topic" value="Employee"  > Employee <br>
     foreach ($_SESSION['columns'] as $value) {
       echo "$value: <br>";
-      echo "<input type='radio' id='a' name='a' value='a'> <br>";
-      // echo "<input type='radio' id='' name='' value='>'> <br>";
-      // echo "<input type='radio' id='' name='' value='<'> <br>";
+      echo "<input type='radio' id='' name='' value='='> = <br>";
+      echo "<input type='radio' id='' name='' value='>'> <br>";
+      echo "<input type='radio' id='' name='' value='<'> <br>";
       echo "<input type='text' name=$value>";
       echo "<br>";
     }
