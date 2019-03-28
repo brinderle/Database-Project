@@ -46,11 +46,13 @@
     <h1>Select from Database</h1>
     <!-- this section dynamically titles the form -->
     <?php
+    echo "<form action='GetColumns.php'>";
     foreach ($_SESSION['columns'] as $value) {
       echo "$value: <br>";
       echo "<input type='text' name=$value>";
-      echo "<br";
+      echo "<br>";
     }
+    echo "</form>";
     ?>
     <form action="GetColumns.php">
       First Col:<br>
