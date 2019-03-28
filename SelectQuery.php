@@ -28,8 +28,9 @@
     $result = mysqli_query($con,$sql);
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
-        echo $value . "\t";
+        echo $value . "       ";
     }
+    echo "<br>";
     while($row = mysqli_fetch_array($result)) {
         // echo $row['attraction_id'];
         // echo $row['name'];
@@ -37,7 +38,7 @@
         // echo " " . $row['region_name'];
         // echo $row;
         foreach ($_SESSION['columns'] as $value) {
-            echo $row[$value] . "\t";
+            echo $row[$value] . "      ";
         }
         echo "<br>";
     }
