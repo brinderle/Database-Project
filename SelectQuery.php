@@ -13,8 +13,10 @@
     $sql="SELECT * FROM Attraction WHERE 1=1";
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
+    $_SESSION['operators'] = array();
     foreach ($_SESSION['columns'] as $value) {
         array_push($_SESSION['parameters'], $_POST[$value]);
+        array_push($_SESSION['operators'], $_POST[$value . 'ID']);
     }
     // append the conditions to the where clause if there was a value entered for that field
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
