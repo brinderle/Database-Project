@@ -23,17 +23,17 @@
             $sql .= " AND " . $_SESSION['columns'][$i] . "=" . $_SESSION['parameters'][$i];
         }
     }
-    echo $sql;
+    echo $sql . "<br>";
 
-    // $result = mysqli_query($con,$sql);
-    // // Print the data from the table row by row
-    // while($row = mysqli_fetch_array($result)) {
-    //     // echo $row['attraction_id'];
-    //     // echo $row['name'];
-    //     // echo " " . $row['park'];
-    //     // echo " " . $row['region_name'];
-    //     echo $row;
-    //     echo "<br>";
-    // }
+    $result = mysqli_query($con,$sql);
+    // Print the data from the table row by row
+    while($row = mysqli_fetch_array($result)) {
+        // echo $row['attraction_id'];
+        // echo $row['name'];
+        // echo " " . $row['park'];
+        // echo " " . $row['region_name'];
+        echo $row;
+        echo "<br>";
+    }
     mysqli_close($con);
 ?>
