@@ -47,7 +47,9 @@
     <!-- this section dynamically titles the form -->
     <?php
     foreach ($_SESSION['columns'] as $value) {
-      echo "$value <br>";
+      echo "$value: <br>";
+      echo "<input type='text' name=$value>";
+      echo "<br";
     }
     ?>
     <form action="GetColumns.php">
