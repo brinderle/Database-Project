@@ -41,7 +41,7 @@
     ?>
     <br>
     <br>
-    <p>Fill out this form with the values you would like to insert for each field.</p>
+    <p>Fill out this form with the values you would like to use as criteria to delete.</p>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='DeleteQuery.php' method='post'>";
