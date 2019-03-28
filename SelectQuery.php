@@ -20,7 +20,8 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
+            $sql .= "a"
+            // $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
         }
     }
     echo $sql;
