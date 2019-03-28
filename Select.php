@@ -42,7 +42,7 @@
     ?>
     <!-- this section dynamically titles the form -->
     <?php
-    echo "<form action='SelectQuery.php'>";
+    echo "<form action='SelectQuery.php' method='post'>";
     foreach ($_SESSION['columns'] as $value) {
       echo "$value: <br>";
       echo "<input type='text' name=$value>";
