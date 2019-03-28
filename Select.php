@@ -6,9 +6,36 @@
     <title>Query</title>
   </head>
   <body>
+    <!-- this is the php section to get the column names for the topic and put them in the session array -->
+    <?php
+    require_once('./library.php');
+    $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
+    $DATABASE);
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo("Can't connect to MySQL Server. Error code: " .
+        mysqli_connect_error());
+        return null;
+    }
+    // Form the SQL query (a SELECT query)
+    
+    session_start();
+    $table = $_SESSION['Topic'];
+    $columns = array();
+    // Can substitute out the table name for whatever topic was passed in
+    $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table'";
+    $result = mysqli_query($con,$sql);
+    // Print the data from the table row by row
+    while($row = mysqli_fetch_array($result)) {
+        array_push($columns, $row['COLUMN_NAME']);
+    }
+    $_SESSION['columns'] = $columns;
+    mysqli_close($con);
+?>
+    <!-- this is the section to display the topic -->
     <?php
     session_start();
-    echo 'Your topic is ';
+    echo 'The topic you selected is ';
     echo $_SESSION["Topic"];
     echo '<br>';
     ?>
@@ -17,6 +44,12 @@
         <p><input type="submit" /></p>
     </form>
     <h1>Select from Database</h1>
+    <!-- this section dynamically titles the form -->
+    <?php
+    foreach ($_SESSION['columns'] as $value) {
+      echo "$value <br>";
+    }
+    ?>
     <form action="GetColumns.php">
       First Col:<br>
       <input type="text" name="firstCol" value="">
