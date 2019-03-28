@@ -19,10 +19,11 @@
     // append the conditions to the where clause if there was a value entered for that field
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
-        if $_SESSION['parameters'][$i] != '' {
-            // $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
-            echo 'hello';
-        };
+        echo 'hello';
+        // if $_SESSION['parameters'][$i] != '' {
+        //     // $sql .= " AND $_SESSION['columns'][$i] = $_SESSION['parameters'][$i]";
+        //     echo 'hello';
+        // }
     }
     // echo $sql;
 
