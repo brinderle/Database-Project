@@ -10,21 +10,29 @@
     }
     // Form the SQL query (a SELECT query)
     session_start();
-    $sql="SELECT * FROM $_SESSION['Topic'] WHERE 1=1";
+    $sql="INSERT INTO $_SESSION['Topic'] (";
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
     $_SESSION['operators'] = array();
     foreach ($_SESSION['columns'] as $value) {
         array_push($_SESSION['parameters'], $_POST[$value]);
         array_push($_SESSION['operators'], $_POST[$value . 'ID']);
+        $sql .= $value . ", ";
     }
-    // append the conditions to the where clause if there was a value entered for that field
+    // get rid of the extra comma and space at the end of the sql part
+    $sql = substr($sql, 0, -2);
+    $sql .= ") VALUES (";
+    // append the values to insert
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
-        if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i];
-        }
+        // if ($_SESSION['parameters'][$i] != '') {
+        //     $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i];
+        // }
+        $sql .= $_SESSION['parameters'][$i] . ", ";
     }
+    // get rid of the extra comma and space at the end of the sql part
+    $sql = substr($sql, 0, -2);
+    $sql .= ")";
     echo $sql . "<br>";
 
     $result = mysqli_query($con,$sql);
