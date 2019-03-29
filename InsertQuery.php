@@ -10,7 +10,7 @@
     }
     // Form the SQL query (a SELECT query)
     session_start();
-    $sql="INSERT INTO $_SESSION['Topic'] (";
+    $sql="INSERT INTO " . $_SESSION['Topic'] . " (";
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
     $_SESSION['operators'] = array();
