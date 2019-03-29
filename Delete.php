@@ -46,7 +46,11 @@
     <?php
     echo "<form action='DeleteQuery.php' method='post'>";
     foreach ($_SESSION['columns'] as $value) {
+      $id = $value . 'ID';
       echo "$value: <br>";
+      echo "<input type='radio' id='$id' name='$id' value='='> = <br>";
+      echo "<input type='radio' id='$id' name='$id' value='>'> > <br>";
+      echo "<input type='radio' id='$id' name='$id' value='<'> < <br>";
       echo "<input type='text' name=$value>";
       echo "<br>";
     }
