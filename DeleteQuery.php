@@ -28,16 +28,17 @@
     echo $sql . "<br>";
 
     $result = mysqli_query($con,$sql);
+    echo 'You just made a delete with the query above.';
     // Print the data from the table row by row
-    foreach ($_SESSION['columns'] as $value) {
-        echo $value . " ";
-    }
-    echo "<br>";
-    while($row = mysqli_fetch_array($result)) {
-        foreach ($_SESSION['columns'] as $value) {
-            echo $row[$value] . " ";
-        }
-        echo "<br>";
-    }
+    // foreach ($_SESSION['columns'] as $value) {
+    //     echo $value . " ";
+    // }
+    // echo "<br>";
+    // while($row = mysqli_fetch_array($result)) {
+    //     foreach ($_SESSION['columns'] as $value) {
+    //         echo $row[$value] . " ";
+    //     }
+    //     echo "<br>";
+    // }
     mysqli_close($con);
 ?>
