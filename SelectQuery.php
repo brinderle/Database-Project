@@ -10,7 +10,7 @@
     }
     // Form the SQL query (a SELECT query)
     session_start();
-    $sql="SELECT * FROM $_SESSION['Topic'] WHERE 1=1";
+    $sql="SELECT * FROM " . $_SESSION['Topic'] . " WHERE 1=1";
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
     $_SESSION['operators'] = array();
