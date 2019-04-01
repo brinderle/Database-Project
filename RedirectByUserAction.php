@@ -22,7 +22,7 @@
          }
          else if($selected_action == "Update")
          {
-            header('Location: Update.html');
+            header('Location: Update.php');
          }
          else if($selected_action == "Delete")
          {
