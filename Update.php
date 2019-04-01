@@ -41,7 +41,7 @@
     ?>
     <br>
     <br>
-    <p>Use this first part of the form to input the conditions which you would like to update on.</p>
+    <p>Use this first part of the form to input the conditions which you would like to update on.  This is referring to the WHERE clause</p>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='UpdateQuery.php' method='post'>";

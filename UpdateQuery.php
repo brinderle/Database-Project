@@ -16,8 +16,8 @@
     $_SESSION['update_parameters'] = array();
     $_SESSION['operators'] = array();
     foreach ($_SESSION['columns'] as $value) {
-        $update_value = $_POST[$value] . 'UPDATE';
-        $select_value = $_POST[$value] . 'SELECT';
+        $update_value = $_POST[$value . 'UPDATE'];
+        $select_value = $_POST[$value . 'SELECT'];
         array_push($_SESSION['select_parameters'], $select_value);
         array_push($_SESSION['update_parameters'], $update_value);
         array_push($_SESSION['operators'], $_POST[$value . 'SELECT_ID']);
