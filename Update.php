@@ -47,9 +47,7 @@
     echo "<form action='UpdateQuery.php' method='post'>";
     foreach ($_SESSION['columns'] as $value) {
       $select_id = $value . 'SELECT_ID';
-      $update_id = $value . 'UPDATE_ID';
       $select_value = $value . 'SELECT';
-      $update_value = $value . 'UPDATE';
       echo "$value: <br>";
       echo "<select name='$select_id'>";
       echo "<option value='='> = </option>";
@@ -61,8 +59,12 @@
       // echo "<input type='radio' id='$id' name='$id' value='<'> < <br>";
       echo "<input type='text' name=$select_value>";
       echo "<br>";
+    }
+    echo "<p>Use this second part of the form to input the values that the selected rows should take on after the update.</p>";
+    foreach ($_SESSION['columns'] as $value) {
+      $update_id = $value . 'UPDATE_ID';
+      $update_value = $value . 'UPDATE';
 
-      echo "<p>Use this second part of the form to input the values that the selected rows should take on after the update.</p>";
       echo "$value: <br>";
       echo "<select name='$update_id'>";
       echo "<option value='='> = </option>";
