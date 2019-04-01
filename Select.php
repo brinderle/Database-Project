@@ -49,9 +49,9 @@
       $id = $value . 'ID';
       echo "$value: <br>";
       echo "<select>";
-      echo "<option id='$id' name = '$id' value="="> = </option>";
-      echo "<option id='$id' name = '$id' value=">"> > </option>";
-      echo "<option id='$id' name = '$id' value="<"> < </option>";
+      echo "<option id='$id' name='$id' value='='> = </option>";
+      echo "<option id='$id' name='$id' value='>'> > </option>";
+      echo "<option id='$id' name='$id' value='<'> < </option>";
       echo "</select>";
       // echo "<input type='radio' id='$id' name='$id' value='='> = <br>";
       // echo "<input type='radio' id='$id' name='$id' value='>'> > <br>";
