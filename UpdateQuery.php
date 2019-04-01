@@ -26,7 +26,7 @@
         }
     }
     // get rid of the extra comma and space at the end of the sql SET part
-    $sql = substr($sql, 0, -2);
+    // $sql = substr($sql, 0, -2);
     $sql .= " WHERE ";
     // append the values to insert
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
