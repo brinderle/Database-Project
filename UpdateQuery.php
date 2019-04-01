@@ -15,7 +15,8 @@
     $_SESSION['select_parameters'] = array();
     $_SESSION['update_parameters'] = array();
     $_SESSION['operators'] = array();
-    foreach ($_SESSION['columns'] as $value) {
+    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
+        $value = $_SESSION['columns'][$i];
         $update_value = $_POST[$value . 'UPDATE'];
         $select_value = $_POST[$value . 'SELECT'];
         array_push($_SESSION['select_parameters'], $select_value);
@@ -26,7 +27,7 @@
         }
     }
     // get rid of the extra comma and space at the end of the sql SET part
-    // $sql = substr($sql, 0, -2);
+    $sql = substr($sql, 0, -2);
     $sql .= " WHERE ";
     // append the values to insert
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
