@@ -62,6 +62,5 @@
     echo "<input type='submit' value='Submit'>";
     echo "</form>";
     ?>
-    <p>Also need to add functionality for greater than, less than, and equal to selection</p>
     </body>
 </html>
