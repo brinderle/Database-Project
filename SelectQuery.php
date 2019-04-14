@@ -22,7 +22,12 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i];
+            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i];
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+                $sql .= '"' . $_SESSION['parameters'][$i] . '"';
+            } else {
+                $sql .= $_SESSION['parameters'][$i];
+            }
         }
     }
     echo $sql . "<br>";

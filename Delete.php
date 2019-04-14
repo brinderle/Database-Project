@@ -22,14 +22,17 @@
     session_start();
     $table = $_SESSION['Topic'];
     $columns = array();
+    $column_data_types = array();
     // Can substitute out the table name for whatever topic was passed in
     $sql="SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table'";
     $result = mysqli_query($con,$sql);
     // Print the data from the table row by row
     while($row = mysqli_fetch_array($result)) {
         array_push($columns, $row['COLUMN_NAME']);
+        array_push($column_data_types, $row['DATA_TYPE']);
     }
     $_SESSION['columns'] = $columns;
+    $_SESSION['column_data_types'] = $column_data_types;
     mysqli_close($con);
 ?>
     <h1>Delete From Database</h1>

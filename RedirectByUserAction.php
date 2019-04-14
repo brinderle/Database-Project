@@ -12,9 +12,6 @@
         echo "You have selected the action:" .$selected_action ; 
         echo "You have selected the Topic:" .$selected_topic; 
 
-        // if ($_SESSION['Topic'] == "Park Names & Regions") {
-        //     $_SESSION['Topic'] = "Region r NATURAL JOIN Park p on r.park_name = p.name";
-        // }
 
          if($selected_action == "Insert")
          {
