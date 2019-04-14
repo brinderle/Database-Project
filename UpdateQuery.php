@@ -23,7 +23,11 @@
         array_push($_SESSION['update_parameters'], $update_value);
         array_push($_SESSION['operators'], $_POST[$value . 'SELECT_ID']);
         if ($_SESSION['update_parameters'][$i] != '') {
-            $sql .= $_SESSION['columns'][$i] . '=' . $_SESSION['update_parameters'][$i] . ', ';
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+                $sql .= $_SESSION['columns'][$i] . '=' . '"' . $_SESSION['update_parameters'][$i] . '"' . ', ';
+            } else {
+                $sql .= $_SESSION['columns'][$i] . '=' . $_SESSION['update_parameters'][$i] . ', ';
+            }
         }
     }
     // get rid of the extra comma and space at the end of the sql SET part
