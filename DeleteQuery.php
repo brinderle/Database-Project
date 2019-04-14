@@ -10,7 +10,7 @@
     }
     // Form the SQL query (a SELECT query)
     session_start();
-    $sql="DELETE FROM " . $_SESSION['Topic'] . " WHERE 1=1";
+    $sql="DELETE FROM " . $_SESSION['Topic'] . " WHERE ";
     // get the values of the parameters passed in for each column name
     $_SESSION['parameters'] = array();
     $_SESSION['operators'] = array();
@@ -22,23 +22,14 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i];
+            $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i] . " AND ";
         }
     }
+    // get rid of the extra AND and two spaces
+    $sql = substr($sql, 0, -5);
     echo $sql . "<br>";
 
     $result = mysqli_query($con,$sql);
     echo 'You just made a delete with the query above.';
-    // Print the data from the table row by row
-    // foreach ($_SESSION['columns'] as $value) {
-    //     echo $value . " ";
-    // }
-    // echo "<br>";
-    // while($row = mysqli_fetch_array($result)) {
-    //     foreach ($_SESSION['columns'] as $value) {
-    //         echo $row[$value] . " ";
-    //     }
-    //     echo "<br>";
-    // }
     mysqli_close($con);
 ?>
