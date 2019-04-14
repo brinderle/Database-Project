@@ -25,10 +25,11 @@
     // append the values to insert
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
-        // if ($_SESSION['parameters'][$i] != '') {
-        //     $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['parameters'][$i];
-        // }
-        $sql .= $_SESSION['parameters'][$i] . ", ";
+        if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime")
+            $sql .= '"' . $_SESSION['parameters'][$i] . '", ';
+        } else {
+            $sql .= $_SESSION['parameters'][$i] . ", ";
+        }
     }
     // get rid of the extra comma and space at the end of the sql part
     $sql = substr($sql, 0, -2);
