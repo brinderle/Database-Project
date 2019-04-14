@@ -40,15 +40,12 @@
     foreach ($_SESSION['columns'] as $value) {
         echo "<td>" . $value . "</td>";
     }
-    // echo "<br>";
     echo "</tr>";
     while($row = mysqli_fetch_array($result)) {
         echo "<tr>";
         foreach ($_SESSION['columns'] as $value) {
-            // echo $row[$value] . " ";
             echo "<td>" . $row[$value] . "</td>";
         }
-        // echo "<br>";
         echo "</tr>";
     }
     echo "</table>";
