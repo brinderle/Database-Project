@@ -32,17 +32,25 @@
     }
     echo $sql . "<br>";
 
+    // get result and format it as a table
+    echo "<table>";
+    echo "<tr>";
     $result = mysqli_query($con,$sql);
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
-        echo $value . " ";
+        echo "<td>" . $value . "</td>";
     }
-    echo "<br>";
+    // echo "<br>";
+    echo "</tr>";
     while($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
         foreach ($_SESSION['columns'] as $value) {
-            echo $row[$value] . " ";
+            // echo $row[$value] . " ";
+            echo "<td>" . $row[$value] . "</td>";
         }
-        echo "<br>";
+        // echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
     mysqli_close($con);
 ?>
