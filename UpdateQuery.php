@@ -33,7 +33,11 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['select_parameters'][$i] != '') {
-            $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['select_parameters'][$i] . " AND ";
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+                $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '"' . $_SESSION['select_parameters'][$i] . '"' . " AND ";
+            } else {
+                $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['select_parameters'][$i] . " AND ";
+            }
         }
     }
     // get rid of the extra AND and two spaces
