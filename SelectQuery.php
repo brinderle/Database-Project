@@ -1,4 +1,10 @@
 <?php
+    function export() {
+        echo "hello";
+    }
+?>
+
+<?php
     require_once('./library.php');
     $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
     $DATABASE);
@@ -33,7 +39,7 @@
     echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
-    echo "<button onclick=echo 'hello'>Export Data</button>";
+    echo "<button onclick='export()'>Export Data</button>";
 
     // get result and format it as a table
     echo "<table>";
