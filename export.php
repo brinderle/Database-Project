@@ -1,7 +1,17 @@
 <?php
 
 session_start();
-$result = $_SESSION['result'];
+require_once('./library.php');
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD,
+$DATABASE);
+// Check connection
+if (mysqli_connect_errno()) {
+    echo("Can't connect to MySQL Server. Error code: " .
+    mysqli_connect_error());
+    return null;
+}
+$sql = $_SESSION['query'];
+$result = mysqli_query($con,$sql);
 if (!$result) die('Couldn\'t fetch records');
 $num_fields = mysql_num_fields($result);
 $headers = array();
@@ -20,5 +30,6 @@ if ($fp && $result) {
     }
     die;
 }
+mysqli_close($con);
 
 ?>
