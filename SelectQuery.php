@@ -1,7 +1,4 @@
 <?php
-    function export() {
-        echo "hello";
-    }
 
     require_once('./library.php');
     $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
@@ -38,12 +35,13 @@
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
     // echo "<button onclick='export()'>Export Data</button>";
-    echo '<button type="submit" id="export_csv_data" name="export_csv_data" value="Export to CSV" class="btn btn-info">Export to CSV</button>';
+    echo "<button type='submit' action='export.php'>Export to CSV</button>";
 
     // get result and format it as a table
     echo "<table>";
     echo "<tr>";
     $result = mysqli_query($con,$sql);
+    $_SESSION['result'] = $result;
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
         echo "<td>" . $value . "</td>";

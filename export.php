@@ -1,20 +1,24 @@
 <?php
-	if(isset($_POST["export_csv_data"])) {
-	$csv_file = "phpzag_csv_export_".date('Ymd') . ".csv";
-	header("Content-Type: text/csv");
-	header("Content-Disposition: attachment; filename=\"$csv_file\"");
-	$fh = fopen( 'php://output', 'w' );
-	$is_coloumn = true;
-	if(!empty($records)) {
-	foreach($records as $record) {
-	if($is_coloumn) {
-	fputcsv($fh, array_keys($record));
-	$is_coloumn = false;
-	}
-	fputcsv($fh, array_values($record));
-	}
-	fclose($fh);
-	}
-	exit;
-	}
+
+session_start();
+$result = $_SESSION['result'];
+if (!$result) die('Couldn\'t fetch records');
+$num_fields = mysql_num_fields($result);
+$headers = array();
+for ($i = 0; $i < $num_fields; $i++) {
+    $headers[] = mysql_field_name($result , $i);
+}
+$fp = fopen('php://output', 'w');
+if ($fp && $result) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="export.csv"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    fputcsv($fp, $headers);
+    while ($row = $result->fetch_array(MYSQLI_NUM)) {
+        fputcsv($fp, array_values($row));
+    }
+    die;
+}
+
 ?>
