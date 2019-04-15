@@ -2,6 +2,7 @@
 
 session_start();
 $result = $_SESSION['result'];
+echo $result;
 if (!$result) die('Couldn\'t fetch records');
 $num_fields = mysql_num_fields($result);
 $headers = array();
