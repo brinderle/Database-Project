@@ -43,6 +43,7 @@
     echo "<tr>";
     $result = mysqli_query($con,$sql);
     $_SESSION['result'] = $result;
+    $_SESSION['query'] = $sql;
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
         echo "<td>" . $value . "</td>";
