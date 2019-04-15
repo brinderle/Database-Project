@@ -2,41 +2,23 @@
 
 session_start();
 $result = $_SESSION['result'];
-$fields = mysql_num_fields ( $result );
-
-for ( $i = 0; $i < $fields; $i++ )
-{
-    $header .= mysql_field_name( $result , $i ) . "\t";
+if (!$result) die('Couldn\'t fetch records');
+$num_fields = mysql_num_fields($result);
+$headers = array();
+for ($i = 0; $i < $num_fields; $i++) {
+    $headers[] = mysql_field_name($result , $i);
 }
-
-while( $row = mysql_fetch_row( $result ) )
-{
-    $line = '';
-    foreach( $row as $value )
-    {                                            
-        if ( ( !isset( $value ) ) || ( $value == "" ) )
-        {
-            $value = "\t";
-        }
-        else
-        {
-            $value = str_replace( '"' , '""' , $value );
-            $value = '"' . $value . '"' . "\t";
-        }
-        $line .= $value;
+$fp = fopen('php://output', 'w');
+if ($fp && $result) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="export.csv"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    fputcsv($fp, $headers);
+    while ($row = $result->fetch_array(MYSQLI_NUM)) {
+        fputcsv($fp, array_values($row));
     }
-    $data .= trim( $line ) . "\n";
-}
-$data = str_replace( "\r" , "" , $data );
-
-if ( $data == "" )
-{
-    $data = "\n(0) Records Found!\n";                        
+    die;
 }
 
-header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=your_desired_name.xls");
-header("Pragma: no-cache");
-header("Expires: 0");
-print "$header\n$data";
 ?>
