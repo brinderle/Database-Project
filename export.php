@@ -24,7 +24,7 @@ if ($fp && $result) {
     header('Content-Disposition: attachment; filename="export.csv"');
     header('Pragma: no-cache');
     header('Expires: 0');
-    fputcsv($fp, $array_values($_SESSION['columns']));
+    fputcsv($fp, $headers);
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
         fputcsv($fp, array_values($row));
     }
