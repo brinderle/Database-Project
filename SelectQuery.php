@@ -2,18 +2,6 @@
     function export() {
         echo "hello";
     }
-    function csvFileFromResult($filename, $result, $showColumnHeaders = true) {
-        $fp = fopen($filename, 'w');
-        $rc = csvFromResult($fp, $result, $showColumnHeaders);
-        fclose($fp);
-        return $rc;
-    }
-    function csvToExcelDownloadFromResult($result, $showColumnHeaders = true, $asFilename = 'data.csv') {
-        setExcelContentType();
-        setDownloadAsHeader($asFilename);
-        return csvFileFromResult('php://output', $result, $showColumnHeaders);
-    }
-
 
     require_once('./library.php');
     $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
@@ -49,12 +37,12 @@
     echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
-    $result = mysqli_query($con,$sql);
-    // echo "<button onclick='csvToExcelDownloadFromResult($result);'>Export Data</button>";
-    csvToExcelDownloadFromResult($result);
+    echo "<button onclick='export()'>Export Data</button>";
+
     // get result and format it as a table
     echo "<table>";
     echo "<tr>";
+    $result = mysqli_query($con,$sql);
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
         echo "<td>" . $value . "</td>";
