@@ -15,8 +15,7 @@ if ($fp && $result) {
     header('Pragma: no-cache');
     header('Expires: 0');
     fputcsv($fp, $headers);
-    while ($row = $result->fetch_array(MYSQLI_NUM)) {
-    	echo array_values($row);
+    while ($row = mysqli_fetch_array($result)) {
         fputcsv($fp, array_values($row));
     }
     die;
