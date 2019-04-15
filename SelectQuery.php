@@ -34,10 +34,7 @@
     echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
-    // echo "<button onclick='export()'>Export Data</button>";
     echo "<form action = 'export.php'><button type='submit' action='export.php'>Export to CSV</button></form>";
-    // echo "<button type='submit' action='export.php'>Export to CSV</button>";
-    echo "<a href='export.php' target='_blank'>Download employee data</a>";
 
     // get result and format it as a table
     echo "<table>";

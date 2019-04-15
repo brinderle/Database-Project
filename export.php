@@ -1,5 +1,5 @@
-<!-- https://stackoverflow.com/questions/125113/php-code-to-convert-a-mysql-query-to-csv -->
 <?php
+// https://stackoverflow.com/questions/125113/php-code-to-convert-a-mysql-query-to-csv
 
 session_start();
 require_once('./library.php');
