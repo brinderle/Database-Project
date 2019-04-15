@@ -38,7 +38,7 @@
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
     // echo "<button onclick='export()'>Export Data</button>";
-    echo '<button type="submit" id="export_csv_data" name='export_csv_data' value="Export to CSV" class="btn btn-info">Export to CSV</button>';
+    echo '<button type="submit" id="export_csv_data" name="export_csv_data" value="Export to CSV" class="btn btn-info">Export to CSV</button>';
 
     // get result and format it as a table
     echo "<table>";
