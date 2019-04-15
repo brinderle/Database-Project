@@ -1,3 +1,4 @@
+<!-- https://stackoverflow.com/questions/125113/php-code-to-convert-a-mysql-query-to-csv -->
 <?php
 
 session_start();
@@ -13,15 +14,15 @@ if (mysqli_connect_errno()) {
 $sql = $_SESSION['query'];
 $result = mysqli_query($con,$sql);
 if (!$result) die('Couldn\'t fetch records');
-$num_fields = mysql_num_fields($result);
-$headers = array();
-for ($i = 0; $i < $num_fields; $i++) {
-    $headers[] = mysql_field_name($result , $i);
-}
+// $num_fields = mysql_num_fields($result);
+// $headers = array();
+// for ($i = 0; $i < $num_fields; $i++) {
+//     $headers[] = mysql_field_name($result , $i);
+// }
 $fp = fopen('php://output', 'w');
 if ($fp && $result) {
     header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="export.csv"');
+    header('Content-Disposition: attachment; filename="exported_data.csv"');
     header('Pragma: no-cache');
     header('Expires: 0');
     fputcsv($fp, $_SESSION['columns']);
