@@ -50,8 +50,8 @@
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
     $result = mysqli_query($con,$sql);
-    echo "<button onclick='csvToExcelDownloadFromResult($result);'>Export Data</button>";
-
+    // echo "<button onclick='csvToExcelDownloadFromResult($result);'>Export Data</button>";
+    csvToExcelDownloadFromResult($result);
     // get result and format it as a table
     echo "<table>";
     echo "<tr>";
