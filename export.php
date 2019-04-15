@@ -2,7 +2,6 @@
 
 session_start();
 $result = $_SESSION['result'];
-echo $result;
 if (!$result) die('Couldn\'t fetch records');
 $num_fields = mysql_num_fields($result);
 $headers = array();
@@ -17,6 +16,7 @@ if ($fp && $result) {
     header('Expires: 0');
     fputcsv($fp, $headers);
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
+    	echo array_values($row);
         fputcsv($fp, array_values($row));
     }
     die;
