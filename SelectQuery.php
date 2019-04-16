@@ -1,7 +1,7 @@
 <?php
 
     // style sheet
-    echo "<head><link rel='stylesheet' type='text/css' href='css/select_styles.css'></head>"
+    echo "<head><link rel='stylesheet' type='text/css' href='css/select_styles.css'></head>";
 
     require_once('./library.php');
     $con = new mysqli($SERVER, $USERNAME, $PASSWORD,
