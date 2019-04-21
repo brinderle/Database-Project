@@ -61,8 +61,8 @@
             array_push($parameters, $_SESSION['parameters'][$i]);
         }
     }
-
-    $sql->bind_param( $type_string, $parameters );
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param( $type_string, $parameters );
 
     echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
@@ -73,7 +73,7 @@
     echo "<table>";
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
-    $result = $sql->execute();
+    $result = $stmt->execute();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
