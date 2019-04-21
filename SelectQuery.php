@@ -77,7 +77,7 @@
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
     $stmt->execute();
-    $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col);
+    $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
@@ -107,6 +107,9 @@
     //         }
     //         echo "\n";
     //     }
+    while ($stmt->fetch()) {
+        printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
+    }
     echo "</table>";
     $stmt->close();
     mysqli_close($con);
