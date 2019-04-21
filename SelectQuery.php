@@ -59,8 +59,7 @@
                 // assume int
                 $type_string .= "i";
             }
-            $temp = $_SESSION['parameters'][$i];
-            array_push($parameters, $temp);
+            array_push($parameters, serialize($_SESSION['parameters'][$i]));
         }
     }
     $parameters[0] = $type_string;
