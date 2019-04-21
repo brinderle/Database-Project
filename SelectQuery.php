@@ -58,11 +58,12 @@
                 // assume int
                 $type_string .= "i";
             }
-            array_push($parameters, & $_SESSION['parameters'][$i]);
+            array_push($parameters, $_SESSION['parameters'][$i]);
         }
     }
     $stmt = $con->prepare($sql);
-    $stmt->bind_param( $type_string, $parameters );
+    // $stmt->bind_param( $type_string, $parameters );
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
     echo $sql . "<br>";
