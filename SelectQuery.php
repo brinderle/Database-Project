@@ -63,7 +63,6 @@
     }
     $stmt = $con->prepare($sql);
     $stmt->bind_param( $type_string, $parameters );
-    $stmt->bind_result($col1, $col2);
 
 
     echo $sql . "<br>";
@@ -75,7 +74,8 @@
     echo "<table>";
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
-    $result = $stmt->execute();
+    $stmt->execute();
+    // $result = $stmt->get_result();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
@@ -90,13 +90,22 @@
     //     }
     //     echo "</tr>";
     // }
-    while($row = $result->fetch_array(MYSQLI_NUM)) {
-        echo "<tr>";
-        foreach ($_SESSION['columns'] as $value) {
-            echo "<td>" . $row[$value] . "</td>";
-        }
-        echo "</tr>";
-    }
+    // while($row = $result->fetch_array(MYSQLI_NUM)) {
+    //     echo "<tr>";
+    //     foreach ($row as $r) {
+    //         echo "<td>" . $row[$r] . "</td>";
+    //     }
+    //     echo "</tr>";
+    // }
+    // while ($row = $result->fetch_array(MYSQLI_NUM))
+    //     {
+    //         foreach ($row as $r)
+    //         {
+    //             echo "$r ";
+    //         }
+    //         echo "\n";
+    //     }
     echo "</table>";
+    $stmt->close();
     mysqli_close($con);
 ?>
