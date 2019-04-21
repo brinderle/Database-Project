@@ -47,7 +47,7 @@
     // }
     // get the datatypes and bind parameters to the query
     $type_string = "";
-    $parameters = array();
+    $parameters = array("");
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
             $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
@@ -59,14 +59,21 @@
                 // assume int
                 $type_string .= "i";
             }
+            // $bind_name = 'bind' . $i;       
+            // $$bind_name = $$_SESSION['parameters'][$i];      
+            // $bind_names[] = &$$bind_name;
             array_push($parameters, $_SESSION['parameters'][$i]);
         }
+    }
+    $parameters[0] = $type_string;
+    if (count($parameters) == 1) {
+        $parameters = array();
     }
     echo $type_string;
     echo $parameters[0];
     $stmt = $con->prepare($sql);
-    $stmt->bind_param( $type_string, $parameters );
-    // call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    // $stmt->bind_param( $type_string, $parameters );
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
     echo $sql . "<br>";
