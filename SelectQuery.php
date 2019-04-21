@@ -71,7 +71,7 @@
     // echo $parameters[1];
     $stmt = $con->prepare($sql);
     // $stmt->bind_param( $type_string, $parameters );
-    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    // call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
     echo $sql . "<br>";
@@ -88,6 +88,7 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         $column_references[] = &$_SESSION['columns'][$i];
     }
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
     // $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
     // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
     $_SESSION['result'] = $result;
