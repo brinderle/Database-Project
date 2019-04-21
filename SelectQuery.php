@@ -60,7 +60,6 @@
                 $type_string .= "i";
             }
             array_push($parameters, $_SESSION['parameters'][$i]);
-            echo &($_SESSION['parameters'][$i]);
         }
     }
     echo $type_string;
