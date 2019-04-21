@@ -75,7 +75,7 @@
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
     $stmt->execute();
-    // $result = $stmt->get_result();
+    $result = $stmt->get_result();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
