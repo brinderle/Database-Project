@@ -51,6 +51,9 @@
     call_user_func_array(array($stmt, 'bind_param'), $parameters);
     $stmt->execute();
 
+    $_SESSION['bind_parameters'] = $parameters;
+    $_SESSION['sql'] = $sql;
+
 
 
     echo $sql . "<br>";
@@ -66,8 +69,9 @@
     }
 
     $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
-    $_SESSION['result'] = $result;
-    $_SESSION['query'] = $sql;
+    $_SESSION['column_references'] = $column_references;
+    // $_SESSION['result'] = $result;
+    // $_SESSION['query'] = $sql;
 
     // start making table with results from query
     echo "<table>";
