@@ -22,32 +22,50 @@
     // get rid of the extra comma and space at the end of the sql part
     $sql = substr($sql, 0, -2);
     $sql .= ") VALUES (";
-    // append the values to insert
-    for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    {
-        if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-            $sql .= '"' . $_SESSION['parameters'][$i] . '", ';
-        } else {
-            $sql .= $_SESSION['parameters'][$i] . ", ";
+    // // append the values to insert
+    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    // {
+    //     if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+    //         $sql .= '"' . $_SESSION['parameters'][$i] . '", ';
+    //     } else {
+    //         $sql .= $_SESSION['parameters'][$i] . ", ";
+    //     }
+    // }
+    // get the datatypes, leave ? to bind parameters to the query
+    $type_string = "";
+    $parameters = array("");
+    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
+        if ($_SESSION['parameters'][$i] != '') {
+            $sql .= ' ?, ';
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+                $type_string .= "s";
+            } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
+                $type_string .= "d";
+            } else {
+                // assume int
+                $type_string .= "i";
+            }
+            $parameters[] = &$_SESSION['parameters'][$i];
         }
     }
     // get rid of the extra comma and space at the end of the sql part
     $sql = substr($sql, 0, -2);
     $sql .= ")";
-    // echo $sql . "<br>";
+
+    $parameters[0] = &$type_string;
+    // if no parameters are passed, get rid of the type_string
+    if (count($parameters) == 1) {
+        $parameters = array();
+    }
+
+    // prepare statement and execute it
+    $stmt = $con->prepare($sql);
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    $stmt->execute();
+
 
     $result = mysqli_query($con,$sql);
-    echo 'You just made an insert with the query above.';
-    // Print the data from the table row by row
-    // foreach ($_SESSION['columns'] as $value) {
-    //     echo $value . " ";
-    // }
-    // echo "<br>";
-    // while($row = mysqli_fetch_array($result)) {
-    //     foreach ($_SESSION['columns'] as $value) {
-    //         echo $row[$value] . " ";
-    //     }
-    //     echo "<br>";
-    // }
+    // echo 'You just made an insert with the query above.';
+    echo 'You just made an insert into the database';
     mysqli_close($con);
 ?>
