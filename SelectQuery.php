@@ -1,5 +1,5 @@
 <?php
-    // https://www.pontikis.net/blog/dynamically-bind_param-array-mysqli
+    // https://www.pontikis.net/blog/dynamically-bind_param-array-mysqli for some prepared statement knowledge and code
     // style sheet
     echo "<head><link rel='stylesheet' type='text/css' href='select_styles.css'></head>";
 
@@ -22,30 +22,8 @@
         array_push($_SESSION['parameters'], $_POST[$value]);
         array_push($_SESSION['operators'], $_POST[$value . 'ID']);
     }
-    // append the conditions to the where clause if there was a value entered for that field
-    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    // {
-    //     if ($_SESSION['parameters'][$i] != '') {
-    //         $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i];
-    //         if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-    //             $sql .= '"' . $_SESSION['parameters'][$i] . '"';
-    //         } else {
-    //             $sql .= $_SESSION['parameters'][$i];
-    //         }
-    //     }
-    // }
-    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    // {
-    //     if ($_SESSION['parameters'][$i] != '') {
-    //         $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
-    //         // if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-    //         //     $sql .= '"' . $_SESSION['parameters'][$i] . '"';
-    //         // } else {
-    //         //     $sql .= $_SESSION['parameters'][$i];
-    //         // }
-    //     }
-    // }
-    // get the datatypes and bind parameters to the query
+
+    // get the datatypes, leave ? to bind parameters to the query
     $type_string = "";
     $parameters = array("");
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
@@ -59,11 +37,11 @@
                 // assume int
                 $type_string .= "i";
             }
-            // array_push($parameters, $_SESSION['parameters'][$i]);
             $parameters[] = &$_SESSION['parameters'][$i];
         }
     }
     $parameters[0] = &$type_string;
+    // if no parameters are passed, get rid of the type_string
     if (count($parameters) == 1) {
         $parameters = array();
     }
@@ -71,6 +49,8 @@
     // prepare statement and execute it
     $stmt = $con->prepare($sql);
     $stmt->execute();
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+
 
 
     echo $sql . "<br>";
