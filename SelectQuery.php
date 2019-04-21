@@ -93,7 +93,7 @@
     while($row = $result->fetch_array(MYSQLI_NUM)) {
         echo "<tr>";
         foreach ($row as $r) {
-            echo "<td>" . $r . "</td>";
+            echo "<td>" . $row[$r] . "</td>";
         }
         echo "</tr>";
     }
