@@ -22,15 +22,7 @@
     // get rid of the extra comma and space at the end of the sql part
     $sql = substr($sql, 0, -2);
     $sql .= ") VALUES (";
-    // // append the values to insert
-    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    // {
-    //     if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-    //         $sql .= '"' . $_SESSION['parameters'][$i] . '", ';
-    //     } else {
-    //         $sql .= $_SESSION['parameters'][$i] . ", ";
-    //     }
-    // }
+
     // get the datatypes, leave ? to bind parameters to the query
     $type_string = "";
     $parameters = array("");
