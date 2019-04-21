@@ -22,44 +22,78 @@
         array_push($_SESSION['select_parameters'], $select_value);
         array_push($_SESSION['update_parameters'], $update_value);
         array_push($_SESSION['operators'], $_POST[$value . 'SELECT_ID']);
+        // if ($_SESSION['update_parameters'][$i] != '') {
+        //     if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+        //         $sql .= $_SESSION['columns'][$i] . '=' . '"' . $_SESSION['update_parameters'][$i] . '"' . ', ';
+        //     } else {
+        //         $sql .= $_SESSION['columns'][$i] . '=' . $_SESSION['update_parameters'][$i] . ', ';
+        //     }
+        // }
+    }
+
+    // get the datatypes, leave ? to bind parameters to the query
+    $type_string = "";
+    $parameters = array("");
+    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['update_parameters'][$i] != '') {
+            $sql .= $_SESSION['columns'][$i] . '=' . '?, ';
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-                $sql .= $_SESSION['columns'][$i] . '=' . '"' . $_SESSION['update_parameters'][$i] . '"' . ', ';
+                $type_string .= "s";
+            } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
+                $type_string .= "d";
             } else {
-                $sql .= $_SESSION['columns'][$i] . '=' . $_SESSION['update_parameters'][$i] . ', ';
+                // assume int
+                $type_string .= "i";
             }
+            $parameters[] = &$_SESSION['update_parameters'][$i];
         }
     }
+
     // get rid of the extra comma and space at the end of the sql SET part
     $sql = substr($sql, 0, -2);
     $sql .= " WHERE ";
     // append the values to insert
-    for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    {
+    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    // {
+    //     if ($_SESSION['select_parameters'][$i] != '') {
+    //         if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+    //             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '"' . $_SESSION['select_parameters'][$i] . '"' . " AND ";
+    //         } else {
+    //             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['select_parameters'][$i] . " AND ";
+    //         }
+    //     }
+    // }
+    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['select_parameters'][$i] != '') {
+            $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . "? AND ";
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-                $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '"' . $_SESSION['select_parameters'][$i] . '"' . " AND ";
+                $type_string .= "s";
+            } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
+                $type_string .= "d";
             } else {
-                $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['select_parameters'][$i] . " AND ";
+                // assume int
+                $type_string .= "i";
             }
+            $parameters[] = &$_SESSION['select_parameters'][$i];
         }
     }
+
+
     // get rid of the extra AND and two spaces
     $sql = substr($sql, 0, -5);
-    // echo $sql . "<br>";
 
-    $result = mysqli_query($con,$sql);
-    echo 'You just made an update with the query above.';
-    // Print the data from the table row by row
-    // foreach ($_SESSION['columns'] as $value) {
-    //     echo $value . " ";
-    // }
-    // echo "<br>";
-    // while($row = mysqli_fetch_array($result)) {
-    //     foreach ($_SESSION['columns'] as $value) {
-    //         echo $row[$value] . " ";
-    //     }
-    //     echo "<br>";
-    // }
+    $parameters[0] = &$type_string;
+    // if no parameters are passed, get rid of the type_string
+    if (count($parameters) == 1) {
+        $parameters = array();
+    }
+
+    // prepare statement and execute it
+    $stmt = $con->prepare($sql);
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    $stmt->execute();
+
+    // $result = mysqli_query($con,$sql);
+    echo 'You just made an update on the database.';
     mysqli_close($con);
 ?>
