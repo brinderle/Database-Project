@@ -63,7 +63,6 @@
     }
     $stmt = $con->prepare($sql);
     $stmt->bind_param( $type_string, $parameters );
-    $result = $stmt->get_result();
 
 
     echo $sql . "<br>";
@@ -75,7 +74,8 @@
     echo "<table>";
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
-    $result = $stmt->execute();
+    $stmt->execute();
+    $result = $stmt->get_result();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
