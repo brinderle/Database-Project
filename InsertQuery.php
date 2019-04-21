@@ -37,12 +37,12 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
             $sql .= ' ?, ';
-            if ($_SESSION['column_data_types'][$i] == "varchar") {
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
                 $type_string .= "s";
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
                 $type_string .= "d";
             } else {
-                // assume int, datetime qualifies here
+                // assume int
                 $type_string .= "i";
             }
             $parameters[] = &$_SESSION['parameters'][$i];
