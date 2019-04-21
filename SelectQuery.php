@@ -69,9 +69,10 @@
     echo $type_string;
     echo $parameters[1];
     $stmt = $con->prepare($sql);
+    $three_seven = 37;
     $ten = 10;
     // $stmt->bind_param( $type_string, $parameters );
-    $stmt->bind_param( "i", $ten );
+    $stmt->bind_param( "ii", $three_seven, $ten );
     // call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
