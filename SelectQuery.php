@@ -59,7 +59,7 @@
                 // assume int
                 $type_string .= "i";
             }
-            array_push($parameters, $_SESSION['parameters'][$i]);
+            array_push($parameters, $$_SESSION['parameters'][$i]);
         }
     }
     $parameters[0] = $type_string;
@@ -69,9 +69,8 @@
     echo $type_string;
     // echo $parameters[2];
     $stmt = $con->prepare($sql);
-    $var = 37
-    $stmt->bind_param( $type_string, array(${$var}) );
-    // call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    // $stmt->bind_param( $type_string, $parameters );
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
     echo $sql . "<br>";
