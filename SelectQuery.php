@@ -50,7 +50,7 @@
     $parameters = array("");
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
+            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . ' ? ';
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
                 $type_string .= "s";
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
