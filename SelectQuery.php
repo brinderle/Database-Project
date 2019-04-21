@@ -59,9 +59,9 @@
                 // assume int
                 $type_string .= "i";
             }
-            // $bind_name = 'bind' . $i;       
-            // $$bind_name = $$_SESSION['parameters'][$i];      
-            // $bind_names[] = &$$bind_name;
+            $bind_name = 'bind' . $i;       
+            $$bind_name = $$_SESSION['parameters'][$i];      
+            $bind_names[] = &$$bind_name;
             array_push($parameters, $_SESSION['parameters'][$i]);
         }
     }
@@ -70,10 +70,10 @@
         $parameters = array();
     }
     echo $type_string;
-    echo $parameters[0];
+    echo $parameters[1];
     $stmt = $con->prepare($sql);
     // $stmt->bind_param( $type_string, $parameters );
-    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    call_user_func_array(array($stmt, 'bind_param'), $bind_names);
 
 
     echo $sql . "<br>";
