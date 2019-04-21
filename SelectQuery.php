@@ -124,9 +124,11 @@
     //     }
     while ($stmt->fetch()) {
         // printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col7);
+        echo "<tr>";
         for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
-            echo ${'col'.$i};
+            echo "<td>" . ${'col'.$i} . "</td>";
         }
+        echo "</tr>";
         // echo $col1;
         // echo $col2;
     }
