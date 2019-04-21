@@ -88,9 +88,9 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         $column_references[] = &$_SESSION['columns'][$i];
     }
-    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    // call_user_func_array(array($stmt, 'bind_param'), $parameters);
     // $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
-    // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
+    $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
@@ -121,7 +121,8 @@
     //         echo "\n";
     //     }
     while ($stmt->fetch()) {
-        printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
+        // printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col7);
+        echo $col1;
     }
     echo "</table>";
     $stmt->close();
