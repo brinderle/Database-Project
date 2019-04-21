@@ -67,9 +67,9 @@
         $parameters = array();
     }
     echo $type_string;
-    echo $parameters[2];
+    // echo $parameters[2];
     $stmt = $con->prepare($sql);
-    $stmt->bind_param( $type_string, $parameters );
+    $stmt->bind_param( $type_string, array(37) );
     // call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
