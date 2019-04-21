@@ -62,6 +62,8 @@
             array_push($parameters, $_SESSION['parameters'][$i]);
         }
     }
+    echo $type_string;
+    echo $parameters[0];
     $stmt = $con->prepare($sql);
     $stmt->bind_param( $type_string, $parameters );
     // call_user_func_array(array($stmt, 'bind_param'), $parameters);
