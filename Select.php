@@ -44,7 +44,7 @@
     ?>
     <br>
     <br>
-    <p>Fill out this form with the values you would like to query on for each field.</p>
+    <p>Fill out this form with the values you would like to query on for each field.  If you do not input any values into the fields, submitting will return all of the data for this topic.</p>
     <!-- this section dynamically titles the form -->
     <?php
     echo "<form action='SelectQuery.php' method='post'>";
@@ -56,9 +56,6 @@
       echo "<option value='>'> > </option>";
       echo "<option value='<'> < </option>";
       echo "</select>";
-      // echo "<input type='radio' id='$id' name='$id' value='='> = <br>";
-      // echo "<input type='radio' id='$id' name='$id' value='>'> > <br>";
-      // echo "<input type='radio' id='$id' name='$id' value='<'> < <br>";
       echo "<input type='text' name=$value>";
       echo "<br>";
     }

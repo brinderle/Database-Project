@@ -57,9 +57,6 @@
       echo "<option value='>'> > </option>";
       echo "<option value='<'> < </option>";
       echo "</select>";
-      // echo "<input type='radio' id='$id' name='$id' value='='> = <br>";
-      // echo "<input type='radio' id='$id' name='$id' value='>'> > <br>";
-      // echo "<input type='radio' id='$id' name='$id' value='<'> < <br>";
       echo "<input type='text' name=$select_value>";
       echo "<br>";
     }
@@ -69,11 +66,6 @@
       $update_value = $value . 'UPDATE';
 
       echo "$value: <br>";
-      // echo "<select name='$update_id'>";
-      // echo "<option value='='> = </option>";
-      // echo "<option value='>'> > </option>";
-      // echo "<option value='<'> < </option>";
-      // echo "</select>";
       echo "<input type='text' name=$update_value>";
       echo "<br>";
     }
