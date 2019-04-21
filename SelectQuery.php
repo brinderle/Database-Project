@@ -56,7 +56,7 @@
 
 
 
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
     echo "<br>";
     echo "<form action = 'export.php'><button type='submit' action='export.php'>Export to CSV</button></form>";

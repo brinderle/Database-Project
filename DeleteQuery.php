@@ -31,7 +31,7 @@
     }
     // get rid of the extra AND and two spaces
     $sql = substr($sql, 0, -5);
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
 
     $result = mysqli_query($con,$sql);
     echo 'You just made a delete with the query above.';

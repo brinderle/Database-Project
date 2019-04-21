@@ -34,7 +34,7 @@
     // get rid of the extra comma and space at the end of the sql part
     $sql = substr($sql, 0, -2);
     $sql .= ")";
-    echo $sql . "<br>";
+    // echo $sql . "<br>";
 
     $result = mysqli_query($con,$sql);
     echo 'You just made an insert with the query above.';
