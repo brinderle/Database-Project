@@ -90,13 +90,21 @@
     //     }
     //     echo "</tr>";
     // }
-    while($row = $result->fetch_array(MYSQLI_NUM)) {
-        echo "<tr>";
-        foreach ($row as $r) {
-            echo "<td>" . $row[$r] . "</td>";
+    // while($row = $result->fetch_array(MYSQLI_NUM)) {
+    //     echo "<tr>";
+    //     foreach ($row as $r) {
+    //         echo "<td>" . $row[$r] . "</td>";
+    //     }
+    //     echo "</tr>";
+    // }
+    while ($row = $result->fetch_array(MYSQLI_NUM))
+        {
+            foreach ($row as $r)
+            {
+                echo "$r ";
+            }
+            echo "\n";
         }
-        echo "</tr>";
-    }
     echo "</table>";
     mysqli_close($con);
 ?>
