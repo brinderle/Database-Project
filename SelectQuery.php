@@ -97,14 +97,14 @@
     //     }
     //     echo "</tr>";
     // }
-    while ($row = $result->fetch_array(MYSQLI_NUM))
-        {
-            foreach ($row as $r)
-            {
-                echo "$r ";
-            }
-            echo "\n";
-        }
+    // while ($row = $result->fetch_array(MYSQLI_NUM))
+    //     {
+    //         foreach ($row as $r)
+    //         {
+    //             echo "$r ";
+    //         }
+    //         echo "\n";
+    //     }
     echo "</table>";
     $stmt->close();
     mysqli_close($con);
