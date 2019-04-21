@@ -70,7 +70,7 @@
     // echo $parameters[2];
     $stmt = $con->prepare($sql);
     $var = 37
-    $stmt->bind_param( $type_string, array(&$$var) );
+    $stmt->bind_param( $type_string, array(${$var}) );
     // call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
