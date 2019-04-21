@@ -62,7 +62,7 @@
             array_push($parameters, $_SESSION['parameters'][$i]);
         }
     }
-    $parameters[0] = $type_string;
+    $parameters[0] = &$type_string;
     if (count($parameters) == 1) {
         $parameters = array();
     }
