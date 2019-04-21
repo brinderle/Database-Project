@@ -58,7 +58,7 @@
                 // assume int
                 $type_string .= "i";
             }
-            array_push($parameters, $_SESSION['parameters'][$i]);
+            array_push($parameters, & $_SESSION['parameters'][$i]);
         }
     }
     $stmt = $con->prepare($sql);
