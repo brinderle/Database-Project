@@ -37,7 +37,7 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
     {
         if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . ' ?';
+            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
             // if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
             //     $sql .= '"' . $_SESSION['parameters'][$i] . '"';
             // } else {
@@ -63,6 +63,8 @@
     }
     $stmt = $con->prepare($sql);
     $stmt->bind_param( $type_string, $parameters );
+    $result = $stmt->get_result();
+
 
     echo $sql . "<br>";
     echo "The results from the query are shown below.  Click the Export Data button if you would like to export this data to a csv file.";
@@ -81,10 +83,17 @@
         echo "<td>" . $value . "</td>";
     }
     echo "</tr>";
-    while($row = mysqli_fetch_array($result)) {
+    // while($row = mysqli_fetch_array($result)) {
+    //     echo "<tr>";
+    //     foreach ($_SESSION['columns'] as $value) {
+    //         echo "<td>" . $row[$value] . "</td>";
+    //     }
+    //     echo "</tr>";
+    // }
+    while($row = $result->fetch_array(MYSQLI_NUM)) {
         echo "<tr>";
-        foreach ($_SESSION['columns'] as $value) {
-            echo "<td>" . $row[$value] . "</td>";
+        foreach ($row as $r) {
+            echo "<td>" . $r . "</td>";
         }
         echo "</tr>";
     }
