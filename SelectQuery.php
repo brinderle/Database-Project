@@ -89,7 +89,6 @@
         $column_references[] = &$_SESSION['columns'][$i];
     }
     $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
-    echo $result;
     // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
