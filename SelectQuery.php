@@ -1,5 +1,5 @@
 <?php
-
+    // https://www.pontikis.net/blog/dynamically-bind_param-array-mysqli
     // style sheet
     echo "<head><link rel='stylesheet' type='text/css' href='select_styles.css'></head>";
 
@@ -67,8 +67,8 @@
     if (count($parameters) == 1) {
         $parameters = array();
     }
-    echo $type_string;
-    echo $parameters[1];
+    // echo $type_string;
+    // echo $parameters[1];
     $stmt = $con->prepare($sql);
     // $stmt->bind_param( $type_string, $parameters );
     call_user_func_array(array($stmt, 'bind_param'), $parameters);
@@ -84,7 +84,8 @@
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
     $stmt->execute();
-    $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
+    // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
+    $result = $stmt->get_result();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
@@ -114,9 +115,9 @@
     //         }
     //         echo "\n";
     //     }
-    while ($stmt->fetch()) {
-        printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
-    }
+    // while ($stmt->fetch()) {
+    //     printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
+    // }
     echo "</table>";
     $stmt->close();
     mysqli_close($con);
