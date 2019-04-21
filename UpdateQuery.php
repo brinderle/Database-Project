@@ -22,16 +22,10 @@
         array_push($_SESSION['select_parameters'], $select_value);
         array_push($_SESSION['update_parameters'], $update_value);
         array_push($_SESSION['operators'], $_POST[$value . 'SELECT_ID']);
-        // if ($_SESSION['update_parameters'][$i] != '') {
-        //     if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-        //         $sql .= $_SESSION['columns'][$i] . '=' . '"' . $_SESSION['update_parameters'][$i] . '"' . ', ';
-        //     } else {
-        //         $sql .= $_SESSION['columns'][$i] . '=' . $_SESSION['update_parameters'][$i] . ', ';
-        //     }
-        // }
     }
 
     // get the datatypes, leave ? to bind parameters to the query
+    // deal with update_parameters first, what we want the values to be
     $type_string = "";
     $parameters = array("");
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
@@ -52,17 +46,8 @@
     // get rid of the extra comma and space at the end of the sql SET part
     $sql = substr($sql, 0, -2);
     $sql .= " WHERE ";
-    // append the values to insert
-    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    // {
-    //     if ($_SESSION['select_parameters'][$i] != '') {
-    //         if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-    //             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '"' . $_SESSION['select_parameters'][$i] . '"' . " AND ";
-    //         } else {
-    //             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . $_SESSION['select_parameters'][$i] . " AND ";
-    //         }
-    //     }
-    // }
+
+    // append the values for the where clause
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['select_parameters'][$i] != '') {
             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . "? AND ";
