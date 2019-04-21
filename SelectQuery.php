@@ -34,22 +34,23 @@
     //         }
     //     }
     // }
-    for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
-    {
-        if ($_SESSION['parameters'][$i] != '') {
-            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
-            // if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
-            //     $sql .= '"' . $_SESSION['parameters'][$i] . '"';
-            // } else {
-            //     $sql .= $_SESSION['parameters'][$i];
-            // }
-        }
-    }
+    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    // {
+    //     if ($_SESSION['parameters'][$i] != '') {
+    //         $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
+    //         // if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+    //         //     $sql .= '"' . $_SESSION['parameters'][$i] . '"';
+    //         // } else {
+    //         //     $sql .= $_SESSION['parameters'][$i];
+    //         // }
+    //     }
+    // }
     // get the datatypes and bind parameters to the query
     $type_string = "";
     $parameters = array();
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
+            $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
                 $type_string .= "s";
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
@@ -76,7 +77,7 @@
     echo "<tr>";
     // $result = mysqli_query($con,$sql);
     $stmt->execute();
-    $result = $stmt->get_result();
+    // $result = $stmt->get_result();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
