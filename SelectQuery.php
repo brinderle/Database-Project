@@ -76,7 +76,7 @@
     // $result = mysqli_query($con,$sql);
     $stmt->execute();
     $result = $stmt->get_result();
-    $_SESSION['result'] = $result;
+    // $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
