@@ -1,5 +1,5 @@
 <?php
-    // https://www.pontikis.net/blog/dynamically-bind_param-array-mysqli for some prepared statement knowledge and code
+    // https://www.pontikis.net/blog/dynamically-bind_param-array-mysqli
     // style sheet
     echo "<head><link rel='stylesheet' type='text/css' href='select_styles.css'></head>";
 
@@ -22,8 +22,30 @@
         array_push($_SESSION['parameters'], $_POST[$value]);
         array_push($_SESSION['operators'], $_POST[$value . 'ID']);
     }
-
-    // get the datatypes, leave ? to bind parameters to the query
+    // append the conditions to the where clause if there was a value entered for that field
+    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    // {
+    //     if ($_SESSION['parameters'][$i] != '') {
+    //         $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i];
+    //         if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+    //             $sql .= '"' . $_SESSION['parameters'][$i] . '"';
+    //         } else {
+    //             $sql .= $_SESSION['parameters'][$i];
+    //         }
+    //     }
+    // }
+    // for ($i=0;$i<sizeof($_SESSION['columns']);$i++)
+    // {
+    //     if ($_SESSION['parameters'][$i] != '') {
+    //         $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . '?';
+    //         // if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+    //         //     $sql .= '"' . $_SESSION['parameters'][$i] . '"';
+    //         // } else {
+    //         //     $sql .= $_SESSION['parameters'][$i];
+    //         // }
+    //     }
+    // }
+    // get the datatypes and bind parameters to the query
     $type_string = "";
     $parameters = array("");
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
@@ -37,20 +59,19 @@
                 // assume int
                 $type_string .= "i";
             }
+            // array_push($parameters, $_SESSION['parameters'][$i]);
             $parameters[] = &$_SESSION['parameters'][$i];
         }
     }
     $parameters[0] = &$type_string;
-    // if no parameters are passed, get rid of the type_string
     if (count($parameters) == 1) {
         $parameters = array();
     }
-
-    // prepare statement and execute it
+    // echo $type_string;
+    // echo $parameters[1];
     $stmt = $con->prepare($sql);
-    $stmt->execute();
-    call_user_func_array(array($stmt, 'bind_param'), $parameters);
-
+    // $stmt->bind_param( $type_string, $parameters );
+    // call_user_func_array(array($stmt, 'bind_param'), $parameters);
 
 
     echo $sql . "<br>";
@@ -58,34 +79,49 @@
     echo "<br>";
     echo "<form action = 'export.php'><button type='submit' action='export.php'>Export to CSV</button></form>";
 
-    // set up column variables and pass references of them to the bind_result function
-    $column_references = array();
-    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
-        ${'col'.$i};
-        $column_references[] = &${'col'.$i};
-    }
-
-    $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
-    $_SESSION['result'] = $result;
-    $_SESSION['query'] = $sql;
-
-    // start making table with results from query
+    // get result and format it as a table
     echo "<table>";
     echo "<tr>";
-
-    // print the columns in the table
+    // $result = mysqli_query($con,$sql);
+    $stmt->execute();
+    $column_references = array();
+    for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
+        $column_references[] = &$_SESSION['columns'][$i];
+    }
+    call_user_func_array(array($stmt, 'bind_param'), $parameters);
+    // $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
+    // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
+    $_SESSION['result'] = $result;
+    $_SESSION['query'] = $sql;
+    // Print the data from the table row by row
     foreach ($_SESSION['columns'] as $value) {
         echo "<td>" . $value . "</td>";
     }
     echo "</tr>";
- 
-    // print the rows in the table
+    // while($row = mysqli_fetch_array($result)) {
+    //     echo "<tr>";
+    //     foreach ($_SESSION['columns'] as $value) {
+    //         echo "<td>" . $row[$value] . "</td>";
+    //     }
+    //     echo "</tr>";
+    // }
+    // while($row = $result->fetch_array(MYSQLI_NUM)) {
+    //     echo "<tr>";
+    //     foreach ($row as $r) {
+    //         echo "<td>" . $row[$r] . "</td>";
+    //     }
+    //     echo "</tr>";
+    // }
+    // while ($row = $result->fetch_array(MYSQLI_NUM))
+    //     {
+    //         foreach ($row as $r)
+    //         {
+    //             echo "$r ";
+    //         }
+    //         echo "\n";
+    //     }
     while ($stmt->fetch()) {
-        echo "<tr>";
-        for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
-            echo "<td>" . ${'col'.$i} . "</td>";
-        }
-        echo "</tr>";
+        printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
     }
     echo "</table>";
     $stmt->close();
