@@ -86,6 +86,7 @@
     $stmt->execute();
     // $result = $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6, $col7);
     $result = $stmt->get_result();
+    $stmt->close();
     $_SESSION['result'] = $result;
     $_SESSION['query'] = $sql;
     // Print the data from the table row by row
@@ -119,6 +120,6 @@
     //     printf("%s %s %s %s %s %s %s\n", $col1, $col2, $col3, $col4, $col5, $col6, $col);
     // }
     echo "</table>";
-    $stmt->close();
+    // $stmt->close();
     mysqli_close($con);
 ?>
