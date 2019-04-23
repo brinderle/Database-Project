@@ -7,6 +7,22 @@
     <title>Query</title>
   </head>
   <body>
+    <style>
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+  height:50%;
+}
+</style>
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,10 +59,21 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<!-- <div class="row">
+    <div class="column">
+      <img src="FerrisWheel.jpg" alt="Snow" style="width:100%">
+    </div>
+    <div class="column">
+      <img src="UVArotunda.jpg" alt="Forest" style="width:100%">
+    </div>
+    <div class="column" style="height:200px">
+      <img src="RollerCoaster.jpg" alt="Mountains" style="width:100%">
+    </div>
+  </div> -->
 
   <div class ="container-fluid">
     <h1>Query our Database</h1>
-    Please select a Topic:
+   <p style = "text-align: center"> select a Topic: </p>
     <form action="RedirectByUserAction.php" method="POST" style="text-align: center">
       <div class="row">
         <input type="radio" id="Topic" name="Topic" value="Guest"> Guest <br> 
