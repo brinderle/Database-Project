@@ -29,7 +29,11 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
             $sql .= ' ?, ';
-            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") or $_SESSION['column_data_types'][$i] == "date") {
+                if ($_SESSION['column_data_types'][$i] == "date") {
+                    $_SESSION['parameters'][$i] = strtotime($_SESSION['parameters'][$i]);
+                    $_SESSION['parameters'][$i] = date("Y-m-d", $_SESSION['parameters'][$i]);
+                }
                 $type_string .= "s";
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
                 $type_string .= "d";
