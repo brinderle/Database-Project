@@ -24,61 +24,44 @@
         $column_data_types = array();
         $role = "";
 
-        // if($selected_username == 'admin' && $selected_password = 'password'){
-        //     $role = 'admin';
-        //     $_SESSION['loggedIn'] = True;
-        // }
-
         //when users table is set up properly:
-        $sql="SELECT * FROM Users WHERE username = $selected_username AND password = $selected_password";
+        $sql="SELECT * FROM Users WHERE username = '$selected_username' AND password = '$selected_password'";
         $result = mysqli_query($con,$sql);
         // Print the data from the table row by row
         $i = 0;
-        echo "<p> made it here </p>";
 
         while($row = mysqli_fetch_array($result)) {
+            echo "<p> made it here hello</p>";
+
             if($i>1){
                 echo "System Error";
                 break;
             } else {
-                $role = $row["role'"];
+                echo "<p> made it here hello</p>";
+                $role = $row["role"];
                 $i++;
             }
         }
         if($i == 0 || $i>1) {
             echo "No User Found";
+            echo $i;
         }
         else {
             $_SESSION["loggedIn"] = True;
+            $_SESSION['role'] = $role;
             switch ($role) {
                 case 'admin':
-                    $_SESSION["role"] = 'admin';
                     header( 'Location: ActionPage.html');
                     break;
-                case 'client':
-                    $_SESSION["role"] = 'client';
+                case 'employee':
+                    header( 'Location: client.php');
+                    break;
+                case 'guest':
                     header( 'Location: client.php');
                     break;
             }
         }
         mysqli_close($con);
-
-
-        //delete when database is set up properly
-        // switch ($role) {
-        //     case 'admin':
-        //         $_SESSION['role'] = 'admin';
-        //         header( 'Location: ActionPage.html');
-        //         break;
-        //     case 'client':
-        //         $_SESSION['role'] = 'client';
-        //         header( 'Location: client.php');
-        //         break;
-        //     case '':
-        //         $_SESSION['loggedIn'] = False;
-        //         echo "Login Failed. Please try again.";
-        //         break;
-        // }
 
         exit;
         ?>
