@@ -2,7 +2,6 @@
     <body>
         <?php
 		session_start();
-        echo "You have reached the queryspecifics.php\n";
 
         $selected_topic = $_POST['Topic'];  
         $selected_action = $_POST['QueryTopic']; 

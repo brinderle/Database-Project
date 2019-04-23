@@ -51,13 +51,13 @@
             $_SESSION['role'] = $role;
             switch ($role) {
                 case 'admin':
-                    header( 'Location: ActionPage.html');
+                    header( 'Location: ActionPageAdmin.html');
                     break;
                 case 'employee':
-                    header( 'Location: client.php');
+                    header( 'Location: ActionPageManager.php');
                     break;
                 case 'guest':
-                    header( 'Location: client.php');
+                    header( 'Location: ActionPageGuest.php');
                     break;
             }
         }
