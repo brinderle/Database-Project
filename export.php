@@ -34,9 +34,10 @@ $stmt->execute();
 $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
 
 $fp = fopen('php://output', 'w');
+$export_name = "ahoosment_park" + date();
 if ($fp && $result) {
     header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="exported_data.csv"');
+    header('Content-Disposition: attachment; filename="$export_name.csv"');
     header('Pragma: no-cache');
     header('Expires: 0');
     fputcsv($fp, $_SESSION['columns']);
