@@ -31,6 +31,9 @@
             $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . ' ? ';
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
                 $type_string .= "s";
+                if ($_SESSION['column_data_types'][$i] == "datetime") {
+                    $_SESSION['column_data_types'][$i] = date("Y-m-d", $_SESSION['column_data_types'][$i]);
+                }
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
                 $type_string .= "d";
             } else {
@@ -70,8 +73,6 @@
 
     $result = call_user_func_array(array($stmt, 'bind_result'), $column_references);
     $_SESSION['column_references'] = $column_references;
-    // $_SESSION['result'] = $result;
-    // $_SESSION['query'] = $sql;
 
     // start making table with results from query
     echo "<table>";
