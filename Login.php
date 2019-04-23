@@ -18,6 +18,9 @@
             mysqli_connect_error());
             return null;
         }
+
+        $selected_username = mysqli_real_escape_string($con, $selected_username);
+        $selected_password = mysqli_real_escape_string($con, $selected_password);
         
         session_start();
         $columns = array();
