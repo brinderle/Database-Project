@@ -1,18 +1,67 @@
 <html>
     <body>
+        <p> made it</p>
         <?php
-
-        echo "You have pressed submit on the Login.php page, but something went wrong";
 
         $selected_username = $_POST['username'];  
         $selected_password = $_POST['password'];  
 
-        echo "Your username:" .$selected_username ; 
+        echo "Your username:" .$selected_username; 
         echo "Your password:" .$selected_password; 
 
-        //Check here if the user login is valid
-        //IF So, then:
-        header('Location: ActionPage.html');
+        require_once('./library.php');
+
+        $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+        // Check connection
+        if (mysqli_connect_errno()) {
+            echo("Can't connect to MySQL Server. Error code: " .
+            mysqli_connect_error());
+            return null;
+        }
+        
+        session_start();
+        $columns = array();
+        $column_data_types = array();
+        $role = "";
+
+        //when users table is set up properly:
+        $sql="SELECT * FROM Users WHERE username = '$selected_username' AND password = '$selected_password'";
+        $result = mysqli_query($con,$sql);
+        // Print the data from the table row by row
+        $i = 0;
+
+        while($row = mysqli_fetch_array($result)) {
+            echo "<p> made it here hello</p>";
+
+            if($i>1){
+                echo "System Error";
+                break;
+            } else {
+                echo "<p> made it here hello</p>";
+                $role = $row["role"];
+                $i++;
+            }
+        }
+        if($i == 0 || $i>1) {
+            echo "No User Found";
+            echo $i;
+        }
+        else {
+            $_SESSION["loggedIn"] = True;
+            $_SESSION['role'] = $role;
+            switch ($role) {
+                case 'admin':
+                    header( 'Location: ActionPage.html');
+                    break;
+                case 'employee':
+                    header( 'Location: client.php');
+                    break;
+                case 'guest':
+                    header( 'Location: client.php');
+                    break;
+            }
+        }
+        mysqli_close($con);
 
         exit;
         ?>
