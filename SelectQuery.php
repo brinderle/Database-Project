@@ -31,10 +31,6 @@
             $sql .= " AND " . $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . ' ? ';
             if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime") {
                 $type_string .= "s";
-                if ($_SESSION['column_data_types'][$i] == "datetime") {
-                    $_SESSION['column_data_types'][$i] = strtotime($_SESSION['column_data_types'][$i]);
-                    $_SESSION['column_data_types'][$i] = date("Y-m-d", $_SESSION['column_data_types'][$i]);
-                }
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
                 $type_string .= "d";
             } else {
