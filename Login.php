@@ -54,10 +54,10 @@
                     header( 'Location: ActionPageAdmin.html');
                     break;
                 case 'employee':
-                    header( 'Location: ActionPageManager.php');
+                    header( 'Location: ActionPageManager.html');
                     break;
                 case 'guest':
-                    header( 'Location: ActionPageGuest.php');
+                    header( 'Location: ActionPageGuest.html');
                     break;
             }
         }
