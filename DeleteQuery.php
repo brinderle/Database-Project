@@ -35,7 +35,7 @@
     for ($i=0;$i<sizeof($_SESSION['columns']);$i++) {
         if ($_SESSION['parameters'][$i] != '') {
             $sql .= $_SESSION['columns'][$i] . $_SESSION['operators'][$i] . "?" . " AND ";
-            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime" or $_SESSION['column_data_types'][$i] == "date") {
+            if ($_SESSION['column_data_types'][$i] == "varchar" or $_SESSION['column_data_types'][$i] == "datetime" or $_SESSION['column_data_types'][$i] == "date" or $_SESSION['column_data_types'][$i] == "time") {
                 $type_string .= "s";
             } else if ($_SESSION['column_data_types'][$i] == "double" or $_SESSION['column_data_types'][$i] == "float") {
                 $type_string .= "d";
