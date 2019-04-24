@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Query</title>
   </head>
-  <body>
+  <body style="text-align: center">
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
