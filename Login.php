@@ -64,9 +64,11 @@
         //             break;
         //     }
         // }
+
+        // got some of this code from https://www.tutorialspoint.com/php/php_mysql_login.htm
         $count = mysqli_num_rows($result);
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
+        // If result matched $myusername and $mypassword, table row must be 1 row
         
         if($count == 1) {
             $row = mysqli_fetch_array($result);
@@ -85,7 +87,7 @@
                     break;
             }
         } else {
-            $error = "Your Login Name or Password is invalid";
+            $error = "Your Login Name or Password is invalid. Go back to the login page and try again!";
             echo $error;
         }
         mysqli_close($con);
