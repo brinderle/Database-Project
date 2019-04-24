@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-  session_start();
-  if ($_SESSION['role'] != 'employee') {
-    header( 'Location: index.html');
-    break;
-  }
-  ?>
+  <!-- 
+  // session_start();
+  // if ($_SESSION['role'] != 'admin') {
+  //   header( 'Location: index.html');
+  //   break;
+  // }
+  //?> -->
   <head>
     <link rel='stylesheet' href='styles.css' type='text/css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,12 +14,12 @@
     <title>Query</title>
   </head>
   <body>
-    <style>
+ <style>
     /* Three image containers (use 25% for four, and 50% for two, etc) */
-.column {
+ .column {
   float: left;
-  width: 33.33%;
-  padding: 10px;
+  width: 20%;
+  /* padding: 5px; */
 }
 
 /* Clear floats after image containers */
@@ -27,7 +27,20 @@
   content: "";
   clear: both;
   display: table;
-  height:50%;
+  width:10%;
+  height:10%;
+} 
+
+.row {
+  width:30%;
+  margin-left: 33.33%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 </style>
     <nav class="navbar navbar-inverse">
@@ -45,47 +58,38 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="ActionPageAdmin.php">Home</a></li>
-              <li><a href="Select.php">Find</a></li>
-              <li><a href="Update.php">Update</a></li>
-              <li><a href="Insert.php">Insert</a></li>
-              <li><a href="Delete.php">Delete</a></li>
-              <li><a href="index.html">Sign Out</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="ActionPageAdmin.php">Home</a></li>
+        <li><a href="Select.php">Find</a></li>
+        <li><a href="Update.php">Update</a></li>
+        <li><a href="Insert.php">Insert</a></li>
+        <li><a href="Delete.php">Delete</a></li>
+        <li><a href="index.html">Sign Out</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!-- <div class="row">
-    <div class="column">
-      <img src="FerrisWheel.jpg" alt="Snow" style="width:100%">
-    </div>
-    <div class="column">
-      <img src="UVArotunda.jpg" alt="Forest" style="width:100%">
-    </div>
-    <div class="column" style="height:200px">
-      <img src="RollerCoaster.jpg" alt="Mountains" style="width:100%">
-    </div>
-  </div> -->
+      <img src="CombinedPicture.jpg" alt="Parks" class="center">
+
 
   <div class ="container-fluid">
-    <h1>Query our Database</h1>
-   <p style = "text-align: center"> Select a topic: </p>
+    <h1>Come Learn more about AHOOSment park!</h1>
+   <h4 style = "text-align: center"> Select a topic: </h4>
     <form action="RedirectByUserAction.php" method="POST" style="text-align: center">
-      <div class="row">
-        <input type="radio" id="Topic" name="Topic" value="Attraction"> Attraction <br>
-        <input type="radio" id="Topic" name="Topic" value="Park"> Park <br>
-        <input type="radio" id="Topic" name="Topic" value="Region"> Region <br>
-        <input type="radio" id="Topic" name="Topic" value="Ride"> Ride <br>
-        <input type="radio" id="Topic" name="Topic" value="Show"> Show <br>
-        <input type="radio" id="Topic" name="Topic" value="Game"> Game <br>
-        <input type="radio" id="Topic" name="Topic" value="Shop"> Shop <br>
-        <input type="radio" id="Topic" name="Topic" value="Food_Vendor"> Food Vendor <br>
+      <div class="row">         
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Attraction"> Attraction <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Park"> Park <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Region"> Region <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Ride"> Ride <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Show"> Show <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Game"> Game <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Shop"> Shop <br></div>
+        <div class="column"><input type="radio" id="Topic" name="Topic" value="Food_Vendor"> Food Vendor <br></div>
       </div>
-        What you would like to do with it?
-        </br>
+      </br>
+        <h4>What you would like to do with it?</h4>
         <input type="radio" id="QueryTopic" name="QueryTopic" value="Insert" > Insert <br>
         <input type="radio" id="QueryTopic" name="QueryTopic" value="Select"> Select <br>
         <input type="radio" id="QueryTopic" name="QueryTopic" value="Update"  > Update <br>
