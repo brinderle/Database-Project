@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- 
-  // session_start();
-  // if ($_SESSION['role'] != 'admin') {
-  //   header( 'Location: index.html');
-  //   break;
-  // }
-  //?> -->
+  <?php
+   session_start();
+   if ($_SESSION['role'] != 'employee') {
+     header( 'Location: index.html');
+   }
+  ?>
   <head>
     <link rel='stylesheet' href='styles.css' type='text/css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,7 +52,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Ahoosement Park</a>
+      <a class="navbar-brand" href="#">aHOOSment Park</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,7 +74,7 @@
 
 
   <div class ="container-fluid">
-    <h1>Come Learn more about AHOOSment park!</h1>
+    <h1>Come Learn more about the aHOOSment park!</h1>
    <h4 style = "text-align: center"> Select a topic: </h4>
     <form action="RedirectByUserAction.php" method="POST" style="text-align: center">
       <div class="row">         
