@@ -2,7 +2,7 @@
 <html lang="en">
   <?php
   session_start();
-  if ($_SESSION['role'] != 'manager') {
+  if ($_SESSION['role'] != 'employee') {
     header( 'Location: index.html');
     break;
   }
