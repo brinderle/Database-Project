@@ -80,10 +80,10 @@
                     header( 'Location: ActionPageAdmin.php');
                     break;
                 case 'employee':
-                    header( 'Location: ActionPageManager.html');
+                    header( 'Location: ActionPageManager.php');
                     break;
                 case 'guest':
-                    header( 'Location: ActionPageGuest.html');
+                    header( 'Location: ActionPageGuest.php');
                     break;
             }
         } else {
