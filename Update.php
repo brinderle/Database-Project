@@ -25,20 +25,12 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Find</a></li>
-        <li><a href="#">Update</a></li>
-        <li><a href="#">Insert</a></li>
-        <li><a href="#">Delete</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">See Profile</a></li>
-            <li><a href="#">Another action</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <li><a href="ActionPageAdmin.html">Home</a></li>
+        <li><a href="Select.php">Find</a></li>
+        <li><a href="Update.php">Update</a></li>
+        <li><a href="Insert.php">Insert</a></li>
+        <li><a href="Delete.php">Delete</a></li>
+        <li><a href="index.html">Sign Out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
