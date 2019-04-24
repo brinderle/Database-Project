@@ -61,7 +61,7 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="ActionPageAdmin.html">Home</a></li>
+        <li><a href="ActionPageAdmin.php">Home</a></li>
         <li><a href="Select.php">Find</a></li>
         <li><a href="Update.php">Update</a></li>
         <li><a href="Insert.php">Insert</a></li>
