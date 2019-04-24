@@ -3,7 +3,7 @@
   <?php
   session_start();
   if ($_SESSION['role'] != 'admin') {
-    header( "Location: http://".$_SERVER['HTTP_HOST']);
+    header( "index.html");
     break;
   }
   ?>
