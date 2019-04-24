@@ -1,13 +1,13 @@
 <html>
     <body>
-        <p> made it</p>
+        <!-- <p> made it</p> -->
         <?php
 
         $selected_username = $_POST['username'];  
         $selected_password = $_POST['password'];  
 
-        echo "Your username:" .$selected_username; 
-        echo "Your password:" .$selected_password; 
+        // echo "Your username:" .$selected_username; 
+        // echo "Your password:" .$selected_password; 
 
         require_once('./library.php');
 
@@ -86,6 +86,7 @@
             }
         } else {
             $error = "Your Login Name or Password is invalid";
+            echo $error;
         }
         mysqli_close($con);
 
