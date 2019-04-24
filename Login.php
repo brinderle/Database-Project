@@ -77,7 +77,7 @@
             $_SESSION['role'] = $role;
             switch ($role) {
                 case 'admin':
-                    header( 'Location: ActionPageAdmin.html');
+                    header( 'Location: ActionPageAdmin.php');
                     break;
                 case 'employee':
                     header( 'Location: ActionPageManager.html');
