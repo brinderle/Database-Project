@@ -31,25 +31,46 @@
         $sql="SELECT * FROM Users WHERE username = '$selected_username' AND password = '$selected_password'";
         $result = mysqli_query($con,$sql);
         // Print the data from the table row by row
-        $i = 0;
+        // $i = 0;
 
-        while($row = mysqli_fetch_array($result)) {
-            echo "<p> made it here hello</p>";
+        // while($row = mysqli_fetch_array($result)) {
+        //     echo "<p> made it here hello</p>";
 
-            if($i>1){
-                echo "System Error";
-                break;
-            } else {
-                echo "<p> made it here hello</p>";
-                $role = $row["role"];
-                $i++;
-            }
-        }
-        if($i == 0 || $i>1) {
-            echo "No User Found";
-            echo $i;
-        }
-        else {
+        //     if($i>1){
+        //         echo "System Error";
+        //         break;
+        //     } else {
+        //         echo "<p> made it here hello</p>";
+        //         $role = $row["role"];
+        //         $i++;
+        //     }
+        // }
+        // if($i == 0 || $i>1) {
+        //     echo "No User Found";
+        //     echo $i;
+        // }
+        // else {
+        //     $_SESSION["loggedIn"] = True;
+        //     $_SESSION['role'] = $role;
+        //     switch ($role) {
+        //         case 'admin':
+        //             header( 'Location: ActionPageAdmin.html');
+        //             break;
+        //         case 'employee':
+        //             header( 'Location: ActionPageManager.html');
+        //             break;
+        //         case 'guest':
+        //             header( 'Location: ActionPageGuest.html');
+        //             break;
+        //     }
+        // }
+        $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+        
+        if($count == 1) {
+            $row = mysqli_fetch_array($result);
+            $role = $row["role"];
             $_SESSION["loggedIn"] = True;
             $_SESSION['role'] = $role;
             switch ($role) {
@@ -63,6 +84,8 @@
                     header( 'Location: ActionPageGuest.html');
                     break;
             }
+        } else {
+            $error = "Your Login Name or Password is invalid";
         }
         mysqli_close($con);
 
