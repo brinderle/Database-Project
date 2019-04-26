@@ -69,13 +69,16 @@
     $_SESSION['column_data_types'] = $column_data_types;
     mysqli_close($con);
 ?>
-    <h1>Select from Database</h1>
-    <!-- this is the section to display the topic -->
-    <?php
+    <h1>Select 
+      <?php
     session_start();
-    echo 'The topic you selected was ';
     echo $_SESSION["Topic"];
     ?>
+
+
+    </h1>
+    <!-- this is the section to display the topic -->
+    
     <br>
     <br>
     <p>Fill out this form with the values you would like to query on for each field.  </p>

@@ -71,7 +71,7 @@
 
 
   <div class ="container-fluid">
-    <h1>Come Learn more about the aHOOSment park!</h1>
+    <h1>Come learn more about the aHOOSment park!</h1>
    <h4 style = "text-align: center"> Select a topic: </h4>
     <form action="RedirectByUserAction.php" method="POST" style="text-align: center">
       <div class="row">         

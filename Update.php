@@ -69,7 +69,14 @@
     $_SESSION['column_data_types'] = $column_data_types;
     mysqli_close($con);
 ?>
-    <h1>Update the Database</h1>
+        <h1>Update  
+      <?php
+    session_start();
+    echo $_SESSION["Topic"];
+    ?>
+
+
+    </h1>
     <!-- this is the section to display the topic -->
     <?php
     session_start();
